@@ -14,7 +14,10 @@ LINE = ("The dustpan sweeps up everything except the thin grey line it was "
 def main() -> None:
     line = LINE.strip()
     if not line or len(line) > 200 or "\n" in line:
-        raise ValueError("entry must be exactly one line of 1-200 characters")
+        raise ValueError(
+            f"entry must be exactly one line of 1-200 characters "
+            f"(got {len(line)} characters)"
+        )
     out_path = "/output/entry.txt"
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
